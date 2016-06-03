@@ -27,7 +27,7 @@ app.use(morgan('dev'))
 app.get('/setup', function (req, res) {
   // Create a sample user
   var myself = new User({
-    email: 'pflauder@gmail.com',
+    login: 'pflauder@gmail.com',
     password: 'root'
   })
 
@@ -47,8 +47,8 @@ var apiRoutes = express.Router()
 // Authentication (no middleware necessary since this isnt authenticated)
 apiRoutes.post('/authenticate', function (req, res) {
   User.findOne({
-    email: req.body.email
-  },function (err, user) {
+    login: req.body.login
+  }, function (err, user) {
     if (err) {
       throw err
     }
